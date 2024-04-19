@@ -134,11 +134,9 @@ def huggingface_loader(model_name):
     path_to_model = Path(f'{shared.args.model_dir}/{model_name}')
     params = {
         'low_cpu_mem_usage': True,
+        'trust_remote_code': shared.args.trust_remote_code,
         'torch_dtype': torch.bfloat16 if shared.args.bf16 else torch.float16,
     }
-
-    if shared.args.trust_remote_code:
-        params['trust_remote_code'] = True
 
     if shared.args.use_flash_attention_2:
         params['use_flash_attention_2'] = True
@@ -194,8 +192,7 @@ def huggingface_loader(model_name):
             params['torch_dtype'] = torch.float32
         else:
             params['device_map'] = 'auto'
-            if x := get_max_memory_dict():
-                params['max_memory'] = x
+            params['max_memory'] = get_max_memory_dict()
 
             if shared.args.load_in_4bit:
                 # See https://github.com/huggingface/transformers/pull/23479/files
