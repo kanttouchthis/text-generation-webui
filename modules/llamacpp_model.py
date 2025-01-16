@@ -57,6 +57,8 @@ def custom_token_ban_logits_processor(token_ids, input_ids, logits):
 
 class LlamaSmallModelDraft(llama_cpp_lib().llama_speculative.LlamaDraftModel):
     """
+    modified from https://gist.github.com/acasto/dce5f559fbe5da5ceed2c62db7afc262
+    
     Optimized draft model for speculative decoding.
 
     Key Changes:
