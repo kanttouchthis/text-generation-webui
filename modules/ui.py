@@ -149,6 +149,8 @@ def list_model_elements():
         'flash_attn',
         'streaming_llm',
         'attention_sink_size',
+        'draft_model',
+        'num_pred_tokens',
         'hqq_backend',
         'cpp_runner',
     ]

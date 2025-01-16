@@ -47,6 +47,8 @@ loaders_and_params = OrderedDict({
         'flash_attn',
         'streaming_llm',
         'attention_sink_size',
+        'draft_model',
+        'num_pred_tokens',
     ],
     'llamacpp_HF': [
         'n_ctx',
